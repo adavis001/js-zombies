@@ -193,7 +193,6 @@ class Player {
     return console.log("Inventory Full");
   }
  }
-}
 /**
  * Player Class Method => discardItem(item)
  * -----------------------------
@@ -220,7 +219,16 @@ class Player {
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
 
-
+ discardItem(Item) {
+  if(this._pack.indexOf(Item) === -1){
+    console.log(Item + "not discardable!");
+    return false;
+  } else {
+    var discard =this._pack.splice(this._pack.indexOf(Item),1);
+    console.log(this.name + "has discarded " + discard + "!");
+    return true;
+ }
+}
 /**
  * Player Class Method => equip(itemToEquip)
  * -----------------------------
@@ -240,8 +248,11 @@ class Player {
  * @name equip
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
+ equip(itemToEquip) {
 
+ }
 
+}
 /**
  * Player Class Method => eat(itemToEat)
  * -----------------------------

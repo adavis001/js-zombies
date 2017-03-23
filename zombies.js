@@ -119,7 +119,6 @@ class Player {
     this.isAlive = true;
     this.equipped = false;
     this._pack = [];
-    this._maxHealth = "health";
   }
   get name() {
     return this._name;
@@ -147,6 +146,9 @@ class Player {
   }
   getPack() {
     return this._pack;
+  }
+  getMaxHealth() {
+    return this._health;
   }
 }
 

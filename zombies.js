@@ -145,6 +145,9 @@ class Player {
   set speed(speed) {
     this._speed = speed;
   }
+  getPack() {
+    return this._pack;
+  }
 }
 
 /**

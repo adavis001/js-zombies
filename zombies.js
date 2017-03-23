@@ -150,7 +150,6 @@ class Player {
   getMaxHealth() {
     return this._health;
   }
-}
 
 /**
  * Player Class Method => checkPack()
@@ -164,6 +163,9 @@ class Player {
  * @name checkPack
  */
 
+  checkPack() {
+    console.log(this.getPack());
+  }
 
 /**
  * Player Class Method => takeItem(item)
@@ -183,7 +185,15 @@ class Player {
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
 
-
+ takeItem(Item) {
+  if(this._pack.length < 3) {
+    this._pack.push(Item);
+    return console.log("Item Received");
+  } else {
+    return console.log("Inventory Full");
+  }
+ }
+}
 /**
  * Player Class Method => discardItem(item)
  * -----------------------------

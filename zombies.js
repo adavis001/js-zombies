@@ -249,7 +249,19 @@ class Player {
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
  equip(itemToEquip) {
-
+  if(!(itemToEquip instanceof Weapon) || this._pack.indexOf(itemToEquip) === -1){
+    console.log("Wat Weapon?!");
+    return false;
+  }
+  if(this.equipped === false && this._pack.indexOf(itemToEquip) > -1){
+    this.equipped = itemToEquip;
+    this.discardItem(itemToEquip);
+  }
+  if (this.equipped !== false && this._pack.indexOf(itemToEquip) > -1){
+    this.discardItem(itemToEquip);
+    this.takeItem(this.equipped);
+    this.equipped = itemToEquip;
+  }
  }
 
 }

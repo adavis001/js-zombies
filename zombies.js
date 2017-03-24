@@ -297,7 +297,6 @@ class Player {
     this.discardItem(itemToEat);
  }
 
-}
 /**
  * Player Class Method => useItem(item)
  * -----------------------------
@@ -310,8 +309,16 @@ class Player {
  * @name useItem
  * @param {Item/Weapon/Food} item   The item to use.
  */
+useItem(item) {
+  if(item instanceof Weapon === true || this._pack.indexOf(item) !== -1) {
+    this.equip(item);
+  }
+  if (item instanceof Food === true || this._pack.indexOf(item) !== -1) {
+    this.eat(item);
+  }
+}
 
-
+}
 /**
  * Player Class Method => equippedWith()
  * -----------------------------

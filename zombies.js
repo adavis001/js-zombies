@@ -119,6 +119,7 @@ class Player {
     this.isAlive = true;
     this.equipped = false;
     this._pack = [];
+    this._maxHealth = health;
   }
   get name() {
     return this._name;
@@ -148,7 +149,7 @@ class Player {
     return this._pack;
   }
   getMaxHealth() {
-    return this._health;
+    return this._maxHealth;
   }
 
 /**
@@ -264,7 +265,6 @@ class Player {
   }
  }
 
-}
 /**
  * Player Class Method => eat(itemToEat)
  * -----------------------------
@@ -283,8 +283,21 @@ class Player {
  * @name eat
  * @param {Food} itemToEat  The food item to eat.
  */
+ eat(itemToEat) {
+  if(itemToEat instanceof Food === false || this._pack.indexOf(itemToEat) === -1){
+    console.log("Wat Food?!");
+    return false;
+  }
+  else if(this.getMaxHealth() - this.health <= itemToEat.energy) {
+    this._health = this.getMaxHealth();
+  }
+  else{
+    this._health += itemToEat.energy;
+  }
+    this.discardItem(itemToEat);
+ }
 
-
+}
 /**
  * Player Class Method => useItem(item)
  * -----------------------------

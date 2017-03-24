@@ -318,7 +318,6 @@ useItem(item) {
   }
 }
 
-}
 /**
  * Player Class Method => equippedWith()
  * -----------------------------
@@ -332,8 +331,16 @@ useItem(item) {
  * @name equippedWith
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
+equippedWith() {
+  if(this.equipped !== false ){
+    console.log(this.name + " is equipped with " + this.equipped.name);
+    return this.equipped.name;
+  } else {
+    return false;
+  }
+}
 
-
+}
 /**
  * Class => Zombie(health, strength, speed)
  * -----------------------------
@@ -349,7 +356,33 @@ useItem(item) {
  * @property {number} speed
  * @property {boolean} isAlive      Default value should be `true`.
  */
-
+class Zombie {
+  constructor(health, strength, speed){
+    this._health = health;
+    this._strength = strength;
+    this._speed = speed;
+    this._maxHealth = health;
+    this.isAlive = true;
+  }
+  get health() {
+    return this._health;
+  }
+  set health(health) {
+    this._health = health;
+  }
+  get strength() {
+    return this._strength;
+  }
+  set strength(strength) {
+    this._strength = strength;
+  }
+  get speed() {
+    return this._speed;
+  }
+  set speed(speed) {
+    this._speed = speed;
+  }
+}
 
 /**
  * Class => FastZombie(health, strength, speed)
@@ -365,7 +398,11 @@ useItem(item) {
  * @param {number} strength         The zombie's strength.
  * @param {number} speed            The zombie's speed.
  */
-
+class FastZombie extends Zombie {
+  constructor(health,strength,speed){
+    super(health, strength, speed);
+  }
+}
 
 /**
  * FastZombie Extends Zombie Class
@@ -388,7 +425,11 @@ useItem(item) {
  * @param {number} strength         The zombie's strength.
  * @param {number} speed            The zombie's speed.
  */
-
+class StrongZombie extends Zombie {
+  constructor(health,strength,speed){
+    super(health, strength, speed);
+  }
+}
 
 /**
  * StrongZombie Extends Zombie Class
@@ -411,7 +452,11 @@ useItem(item) {
  * @param {number} strength         The zombie's strength.
  * @param {number} speed            The zombie's speed.
  */
-
+class RangedZombie extends Zombie {
+  constructor(health,strength,speed){
+    super(health, strength, speed);
+  }
+}
 
 /**
  * RangedZombie Extends Zombie Class
@@ -434,7 +479,11 @@ useItem(item) {
  * @param {number} strength         The zombie's strength.
  * @param {number} speed            The zombie's speed.
  */
-
+class ExplodingZombie extends Zombie {
+  constructor(health,strength,speed){
+    super(health, strength, speed);
+  }
+}
 
 /**
  * ExplodingZombie Extends Zombie Class
